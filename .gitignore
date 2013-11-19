@@ -1,3 +1,5 @@
 spec/fixtures
 .librarian
 .tmp
+Puppetfile.lock
+Puppetfile.lock
