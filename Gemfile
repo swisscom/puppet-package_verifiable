@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 if ENV.key?('PUPPET_VERSION')
   puppetversion = "~> #{ENV['PUPPET_VERSION']}"
 else
-  puppetversion = ['>= 3.6.2']
+  puppetversion = ['= 3.7.2']
 end
 
 gem 'puppet', puppetversion
