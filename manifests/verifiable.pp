@@ -6,8 +6,10 @@ define package::verifiable(
   require package::base
   $escaped_name = downcase(regsubst($name,'-','_', 'G'))
   package{$name:
-    ensure => $version
-  } -> file_line{
+    ensure => $version,
+    before => File_line["${name}_version_fact"],
+  }
+  file_line{
     "${name}_version_fact":
       line  => "package_${escaped_name}_version=${version}",
       match => "^package_${escaped_name}_version=",
