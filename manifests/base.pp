@@ -5,10 +5,6 @@ class package::base {
     ensure    => 'present',
     owner     => root,
     group     => 0,
-    require   => undef,
-    notify    => undef,
-    before    => undef,
-    subscribe => undef,
     mode      => '0644';
   }
 }
