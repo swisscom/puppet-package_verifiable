@@ -2,7 +2,7 @@
 # and provide a fact to verify its version
 define package::verifiable(
   $manage_package = true,
-  $version,
+  $version = 'installed',
 ){
   require package::base
   $escaped_name = downcase(regsubst($name,'-','_', 'G'))
@@ -17,5 +17,9 @@ define package::verifiable(
       match   => "^package_${escaped_name}_version=",
       path    => $package::base::file_path,
       require => Package[$name],
+  }
+  package::yum::versionlock{
+    $name:
+      ensure => $version
   }
 }

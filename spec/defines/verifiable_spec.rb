@@ -18,6 +18,10 @@ describe 'package::verifiable', :type => 'define' do
       :line    => 'package_testpackage_version=1.0-1',
       :require => 'Package[testpackage]',
     )}
+
+    it { should contain_package__yum__versionlock('testpackage').with(
+      :ensure => '1.0-1'
+    )}
   end
   context 'without managing the package' do
     let(:title){'testpackage'}
