@@ -78,4 +78,17 @@ describe 'package::verifiable', :type => 'define' do
       :require => 'Package[TESTPackage]',
     )}
   end
+  context 'using epoch' do
+    let(:title){'testpackage'}
+    let(:params){
+      {
+        :epoch   => '5'
+      }
+    }
+
+    it { should contain_package__yum__versionlock('testpackage').with(
+      :ensure => 'installed',
+      :epoch  => '5'
+    )}
+  end
 end

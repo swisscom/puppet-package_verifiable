@@ -3,6 +3,7 @@
 define package::verifiable(
   $manage_package = true,
   $version = 'installed',
+  $epoch = '',
 ){
   require package::base
   $escaped_name = downcase(regsubst($name,'-','_', 'G'))
@@ -20,6 +21,7 @@ define package::verifiable(
   }
   package::yum::versionlock{
     $name:
-      ensure => $version
+      ensure => $version,
+      epoch  => $epoch
   }
 }
