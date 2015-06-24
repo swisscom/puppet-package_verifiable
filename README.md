@@ -19,7 +19,7 @@ package::verifiable{
 }
 
 # $::package_some_package_version is undef if the package is not yet installed
-if $::package_some_package_version and verify_package_versions('some-package',$pkg_version) {
+if $::package_some_package_version and !verify_package_versions('some-package',$pkg_version) {
   exec{'systemctl stop some-service && rm -rf /opt/my_package/service':
     before => Package['some-package'],
   }
