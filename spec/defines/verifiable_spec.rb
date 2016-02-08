@@ -90,4 +90,26 @@ describe 'package::verifiable', :type => 'define' do
       :epoch  => '5'
     )}
   end
+  context 'verfiy dependecy on external package' do
+    let(:title){'testpackage'}
+    let(:params){
+      {
+        :manage_package => false,
+      }
+    }
+    let(:pre_condition){
+      "package{'testpackage': ensure => 'installed'}"
+    }
+
+    it { should contain_package('testpackage').with(
+      :ensure => 'installed',
+      :before => 'File_line[testpackage_version_fact]',
+    ) }
+
+    it { should contain_file_line('testpackage_version_fact').with(
+      :path    => '/etc/facter/facts.d/packages.txt',
+      :match   => "^package_testpackage_version=",
+      :line    => 'package_testpackage_version=installed',
+    )}
+  end
 end
