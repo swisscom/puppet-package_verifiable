@@ -10,13 +10,13 @@ describe 'package::verifiable', :type => 'define' do
     }
     it { should contain_package('testpackage').with(
       :ensure => '1.0-1',
+      :before => 'File_line[testpackage_version_fact]',
     ) }
 
     it { should contain_file_line('testpackage_version_fact').with(
       :path    => '/etc/facter/facts.d/packages.txt',
       :match   => "^package_testpackage_version=",
       :line    => 'package_testpackage_version=1.0-1',
-      :require => 'Package[testpackage]',
     )}
 
     it { should contain_package__yum__versionlock('testpackage').with(
@@ -37,7 +37,6 @@ describe 'package::verifiable', :type => 'define' do
       :path    => '/etc/facter/facts.d/packages.txt',
       :match   => "^package_testpackage_version=",
       :line    => 'package_testpackage_version=1.0-1',
-      :require => 'Package[testpackage]',
     )}
   end
 
@@ -50,13 +49,13 @@ describe 'package::verifiable', :type => 'define' do
     }
     it { should contain_package('test-package').with(
       :ensure => '1.0-1',
+      :before => 'File_line[test-package_version_fact]',
     ) }
 
     it { should contain_file_line('test-package_version_fact').with(
       :path    => '/etc/facter/facts.d/packages.txt',
       :match   => "^package_test_package_version=",
       :line    => 'package_test_package_version=1.0-1',
-      :require => 'Package[test-package]',
     )}
   end
 
@@ -69,13 +68,13 @@ describe 'package::verifiable', :type => 'define' do
     }
     it { should contain_package('TESTPackage').with(
       :ensure => '1.0-1',
+      :before => 'File_line[TESTPackage_version_fact]',
     ) }
 
     it { should contain_file_line('TESTPackage_version_fact').with(
       :path    => '/etc/facter/facts.d/packages.txt',
       :match   => "^package_testpackage_version=",
       :line    => 'package_testpackage_version=1.0-1',
-      :require => 'Package[TESTPackage]',
     )}
   end
   context 'using epoch' do
