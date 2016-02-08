@@ -12,12 +12,14 @@ define package::verifiable(
       ensure => $version,
     }
   }
+
+  Package<| title == $name |> -> File_line["${name}_version_fact"]
+
   file_line{
     "${name}_version_fact":
-      line    => "package_${escaped_name}_version=${version}",
-      match   => "^package_${escaped_name}_version=",
-      path    => $package::base::file_path,
-      require => Package[$name],
+      line  => "package_${escaped_name}_version=${version}",
+      match => "^package_${escaped_name}_version=",
+      path  => $package::base::file_path,
   }
   package::yum::versionlock{
     $name:
