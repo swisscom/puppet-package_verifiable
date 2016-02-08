@@ -9,6 +9,8 @@ describe 'package::yum::versionlock', :type => 'define' do
       }
     }
 
+    it { should compile.with_all_deps }
+
     it { should contain_class('package::yum::versionlock_plugin')}
 
     it { should contain_augeas('testpackage_yum_versionlock').with(
@@ -29,6 +31,8 @@ describe 'package::yum::versionlock', :type => 'define' do
       }
     }
 
+    it { should compile.with_all_deps }
+
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
@@ -45,6 +49,8 @@ describe 'package::yum::versionlock', :type => 'define' do
         :ensure => 'absent'
       }
     }
+
+    it { should compile.with_all_deps }
 
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
@@ -63,6 +69,8 @@ describe 'package::yum::versionlock', :type => 'define' do
       }
     }
 
+    it { should compile.with_all_deps }
+
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
@@ -80,6 +88,8 @@ describe 'package::yum::versionlock', :type => 'define' do
       }
     }
 
+    it { should compile.with_all_deps }
+
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
@@ -96,6 +106,8 @@ describe 'package::yum::versionlock', :type => 'define' do
         :ensure => 'present'
       }
     }
+
+    it { should compile.with_all_deps }
 
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',

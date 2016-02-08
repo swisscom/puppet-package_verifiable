@@ -1,6 +1,22 @@
 require File.expand_path(File.join(File.dirname(__FILE__),'../spec_helper'))
 
 describe 'package::verifiable', :type => 'define' do
+  let(:facts_default) do
+    {
+      :virtual                    => 'kvm',
+      :operatingsystem            => 'redhat',
+      :operatingsystemmajrelease  => '7',
+      :operatingsystemrelease     => '7.1',
+      :osfamily                   => 'RedHat',
+      :is_virtual                 => true,
+      :concat_basedir             => '/var/lib/puppet/concat',
+      :domain                     => 'example.com',
+      :ipaddress                  => '10.0.0.1',
+      :fqdn                       => 'std.example.com',
+    }
+  end
+  let(:facts) { facts_default }
+
   context 'default' do
     let(:title){'testpackage'}
     let(:params){
@@ -8,9 +24,12 @@ describe 'package::verifiable', :type => 'define' do
         :version => '1.0-1'
       }
     }
+
+    it { should compile.with_all_deps }
+
     it { should contain_package('testpackage').with(
       :ensure => '1.0-1',
-      :before => 'File_line[testpackage_version_fact]',
+      :before => ['File_line[testpackage_version_fact]'],
     ) }
 
     it { should contain_file_line('testpackage_version_fact').with(
@@ -31,6 +50,9 @@ describe 'package::verifiable', :type => 'define' do
         :manage_package => false,
       }
     }
+
+    it { should compile.with_all_deps }
+
     it { should_not contain_package('testpackage') }
 
     it { should contain_file_line('testpackage_version_fact').with(
@@ -47,9 +69,12 @@ describe 'package::verifiable', :type => 'define' do
         :version => '1.0-1'
       }
     }
+
+    it { should compile.with_all_deps }
+
     it { should contain_package('test-package').with(
       :ensure => '1.0-1',
-      :before => 'File_line[test-package_version_fact]',
+      :before => ['File_line[test-package_version_fact]'],
     ) }
 
     it { should contain_file_line('test-package_version_fact').with(
@@ -66,9 +91,12 @@ describe 'package::verifiable', :type => 'define' do
         :version => '1.0-1'
       }
     }
+
+    it { should compile.with_all_deps }
+
     it { should contain_package('TESTPackage').with(
       :ensure => '1.0-1',
-      :before => 'File_line[TESTPackage_version_fact]',
+      :before => ['File_line[TESTPackage_version_fact]'],
     ) }
 
     it { should contain_file_line('TESTPackage_version_fact').with(
@@ -84,6 +112,8 @@ describe 'package::verifiable', :type => 'define' do
         :epoch   => '5'
       }
     }
+
+    it { should compile.with_all_deps }
 
     it { should contain_package__yum__versionlock('testpackage').with(
       :ensure => 'installed',
@@ -101,9 +131,11 @@ describe 'package::verifiable', :type => 'define' do
       "package{'testpackage': ensure => 'installed'}"
     }
 
+    it { should compile.with_all_deps }
+
     it { should contain_package('testpackage').with(
       :ensure => 'installed',
-      :before => 'File_line[testpackage_version_fact]',
+      :before => ['File_line[testpackage_version_fact]'],
     ) }
 
     it { should contain_file_line('testpackage_version_fact').with(
