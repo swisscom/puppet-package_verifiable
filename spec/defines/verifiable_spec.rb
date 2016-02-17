@@ -40,8 +40,9 @@ describe 'package::verifiable', :type => 'define' do
 
     it { should contain_package__yum__versionlock('testpackage').with(
       :ensure => '1.0-1',
-      :before => 'Package[testpackage]',
     )}
+    it { should contain_package__yum__versionlock('testpackage').that_comes_before('Package[testpackage]') }
+    it { should contain_package__yum__versionlock('testpackage').that_comes_before('File_line[testpackage_version_fact]') }
   end
   context 'without managing the package' do
     let(:title){'testpackage'}
