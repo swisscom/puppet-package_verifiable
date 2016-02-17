@@ -39,7 +39,8 @@ describe 'package::verifiable', :type => 'define' do
     )}
 
     it { should contain_package__yum__versionlock('testpackage').with(
-      :ensure => '1.0-1'
+      :ensure => '1.0-1',
+      :before => 'Package[testpackage]',
     )}
   end
   context 'without managing the package' do
@@ -59,6 +60,9 @@ describe 'package::verifiable', :type => 'define' do
       :path    => '/etc/facter/facts.d/packages.txt',
       :match   => "^package_testpackage_version=",
       :line    => 'package_testpackage_version=1.0-1',
+    )}
+    it { should contain_package__yum__versionlock('testpackage').with(
+      :ensure => '1.0-1',
     )}
   end
 
