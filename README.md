@@ -13,7 +13,7 @@ Usage
 
 ```
 $pkg_version = hiera('some_package_version','1.0-1')
-package::verifiable{
+package_verifiable{
   'some-package':
     version => $pkg_version,
 }
@@ -32,7 +32,7 @@ If the package itself is managed in another module that should not be using the 
 
 ```
 $pkg_version = hiera('some_package_version','1.0-1')
-package::verifiable{
+package_verifiable{
   'some-package':
     version        => $pkg_version,
     manage_package => false,

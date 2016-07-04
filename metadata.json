@@ -1,0 +1,32 @@
+{
+  "name": "puppet-package_verifiable",
+  "version": "2.0.1",
+  "author": "Swisscom (Schweiz) AG",
+  "summary": "Make package version available in the catalog.",
+  "license": "MIT",
+  "source": "https://github.com/swisscom/puppet-package_verifiable",
+  "project_page": "https://github.com/swisscom/puppet-package_verifiable",
+  "issues_url": "https://github.com/swisscom/puppet-package_verifiable/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 3.2.0 < 5.0.0"
+    }
+  ]
+}

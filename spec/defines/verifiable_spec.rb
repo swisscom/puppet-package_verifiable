@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__),'../spec_helper'))
 
-describe 'package::verifiable', :type => 'define' do
+describe 'package_verifiable', :type => 'define' do
   let(:facts_default) do
     {
       :virtual                    => 'kvm',
@@ -38,11 +38,11 @@ describe 'package::verifiable', :type => 'define' do
       :line    => 'package_testpackage_version=1.0-1',
     )}
 
-    it { should contain_package__yum__versionlock('testpackage').with(
+    it { should contain_package_verifiable__yum__versionlock('testpackage').with(
       :ensure => '1.0-1',
     )}
-    it { should contain_package__yum__versionlock('testpackage').that_comes_before('Package[testpackage]') }
-    it { should contain_package__yum__versionlock('testpackage').that_comes_before('File_line[testpackage_version_fact]') }
+    it { should contain_package_verifiable__yum__versionlock('testpackage').that_comes_before('Package[testpackage]') }
+    it { should contain_package_verifiable__yum__versionlock('testpackage').that_comes_before('File_line[testpackage_version_fact]') }
   end
   context 'without managing the package' do
     let(:title){'testpackage'}
@@ -62,7 +62,7 @@ describe 'package::verifiable', :type => 'define' do
       :match   => "^package_testpackage_version=",
       :line    => 'package_testpackage_version=1.0-1',
     )}
-    it { should contain_package__yum__versionlock('testpackage').with(
+    it { should contain_package_verifiable__yum__versionlock('testpackage').with(
       :ensure => '1.0-1',
     )}
   end
@@ -120,7 +120,7 @@ describe 'package::verifiable', :type => 'define' do
 
     it { should compile.with_all_deps }
 
-    it { should contain_package__yum__versionlock('testpackage').with(
+    it { should contain_package_verifiable__yum__versionlock('testpackage').with(
       :ensure => 'installed',
       :epoch  => '5'
     )}

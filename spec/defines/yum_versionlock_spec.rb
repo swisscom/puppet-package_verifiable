@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__),'../spec_helper'))
 
-describe 'package::yum::versionlock', :type => 'define' do
+describe 'package_verifiable::yum::versionlock', :type => 'define' do
   context 'default' do
     let(:title){'testpackage'}
     let(:params){
@@ -11,12 +11,12 @@ describe 'package::yum::versionlock', :type => 'define' do
 
     it { should compile.with_all_deps }
 
-    it { should contain_class('package::yum::versionlock_plugin')}
+    it { should contain_class('package_verifiable::yum::versionlock_plugin')}
 
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
-      :load_path => '/var/lib/puppet/lib/package/lenses',
+      :load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
       :context   => '/files/etc/yum/pluginconf.d/versionlock.list',
       :changes   => ['set testpackage/version 1.0-1']
     )}
@@ -36,7 +36,7 @@ describe 'package::yum::versionlock', :type => 'define' do
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
-      :load_path => '/var/lib/puppet/lib/package/lenses',
+      :load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
       :context   => '/files/etc/yum/pluginconf.d/versionlock.list',
       :changes   => ['set testpackage/epoch 5', 'set testpackage/version 1.0-1']
     )}
@@ -55,7 +55,7 @@ describe 'package::yum::versionlock', :type => 'define' do
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
-      :load_path => '/var/lib/puppet/lib/package/lenses',
+      :load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
       :context   => '/files/etc/yum/pluginconf.d/versionlock.list',
       :changes   => ['rm testpackage']
     )}
@@ -74,7 +74,7 @@ describe 'package::yum::versionlock', :type => 'define' do
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
-      :load_path => '/var/lib/puppet/lib/package/lenses',
+      :load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
       :context   => '/files/etc/yum/pluginconf.d/versionlock.list',
       :changes   => ['rm testpackage']
     )}
@@ -93,7 +93,7 @@ describe 'package::yum::versionlock', :type => 'define' do
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
-      :load_path => '/var/lib/puppet/lib/package/lenses',
+      :load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
       :context   => '/files/etc/yum/pluginconf.d/versionlock.list',
       :changes   => ['rm testpackage']
     )}
@@ -112,7 +112,7 @@ describe 'package::yum::versionlock', :type => 'define' do
     it { should contain_augeas('testpackage_yum_versionlock').with(
       :incl      => '/etc/yum/pluginconf.d/versionlock.list',
       :lens      => 'YumVersionlock.lns',
-      :load_path => '/var/lib/puppet/lib/package/lenses',
+      :load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
       :context   => '/files/etc/yum/pluginconf.d/versionlock.list',
       :changes   => ['rm testpackage']
     )}
