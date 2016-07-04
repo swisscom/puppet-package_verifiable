@@ -16,8 +16,8 @@ matrix:
     - rvm: 1.8.7
       env:
     - rvm: 2.3.0
-      env: PUPPET_VERSION='~> 3.8.7' RAKE_VERSION='~> 10.1'
+      env: PUPPET_VERSION=3.8.7 RAKE_VERSION=10.1
 
 env:
-  - PUPPET_VERSION='~> 3.8.7' RAKE_VERSION='~> 10.1'
+  - PUPPET_VERSION=3.8.7 RAKE_VERSION=10.1
   -
