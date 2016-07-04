@@ -43,5 +43,5 @@ package_verifiable{
 Support
 -------
 
-Please log tickets and issues at our [Projects site](https://github.com/swisscom/puppet-package_verifiable)
+Please log tickets and issues at our [Projects site](https://github.com/swisscom/puppet-package_verifiable/issues)
 
