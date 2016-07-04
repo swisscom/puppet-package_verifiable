@@ -1,5 +1,5 @@
-package
-=======
+package_verifiable
+==================
 
 This is the package module.
 
@@ -42,4 +42,4 @@ package_verifiable{
 Support
 -------
 
-Please log tickets and issues at our [Projects site](https://gitlab.swisscloud.io/puppet-osbase/package)
+Please log tickets and issues at our [Projects site](https://github.com/swisscom/puppet-package_verifiable)
