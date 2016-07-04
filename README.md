@@ -1,5 +1,6 @@
 package_verifiable
 ==================
+[![Build Status](https://travis-ci.org/swisscom/puppet-package_verifiable.svg?branch=master)](https://travis-ci.org/swisscom/puppet-package_verifiable)
 
 This is the package_verifiable module.
 
