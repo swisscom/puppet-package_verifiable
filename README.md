@@ -1,7 +1,7 @@
 package_verifiable
 ==================
 
-This is the package module.
+This is the package_verifiable module.
 
 
 The idea is that we have a way to check within the catalog whether a package currently installed matches the one we want to install.
