@@ -45,3 +45,4 @@ Support
 
 Please log tickets and issues at our [Projects site](https://github.com/swisscom/puppet-package_verifiable/issues)
 
+MIT license, see [LICENSE.md](LICENSE.md)
