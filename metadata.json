@@ -1,5 +1,5 @@
 {
-  "name": "puppet-package_verifiable",
+  "name": "swisscom-package_verifiable",
   "version": "2.0.1",
   "author": "Swisscom (Schweiz) AG",
   "summary": "Make package version available in the catalog.",
