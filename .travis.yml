@@ -3,21 +3,39 @@ language: ruby
 before_install:
   - gem install bundler
 
-bundler_args: --jobs=3 --retry=3
-
 cache: bundler
 
-rvm:
-  - 1.9.3
-  - 2.2.0
-
 matrix:
-  exclude:
+  include:
     - rvm: 1.9.3
-      env: PUPPET_VERSION=4.5
+      env: PUPPET_VERSION=3.7
+    - rvm: 1.9.3
+      env: PUPPET_VERSION=3.8
     - rvm: 2.2.0
-      env: PUPPET_VERSION=3.8.7
+      env: PUPPET_VERSION=4.0
+    - rvm: 2.2.0
+      env: PUPPET_VERSION=4.1
+    - rvm: 2.2.0
+      env: PUPPET_VERSION=4.2
+    - rvm: 2.2.0
+      env: PUPPET_VERSION=4.3
+    - rvm: 2.2.0
+      env: PUPPET_VERSION=4.4
+    - rvm: 2.2.0
+      env: PUPPET_VERSION=4.5
 
-env:
-  - PUPPET_VERSION=3.8.7
-  - PUPPET_VERSION=4.5
+before_deploy:
+  - rvm 1.9.3 do gem install mime-types -v 2.6.2
+  - rvm 1.9.3 do gem install rest-client -v 1.8.0
+deploy:
+  provider: puppetforge
+  user: swisscom
+  password:
+    secure: "cnhWxfMkgXzlUCCb+7e5kSwq52TwOh2F32TSzBWJYNK7YV5eCjT7lkUlgdPCS+WJObSMT4Sz2AQkqEzFwclAokS8fVQRGxNg+KSeCh78U8ebTX7mrMU0FLyk0D1KrTLSCGutRjnWE0XgQu523yCFXg/iCHGRls6iq3hg4A10kjgGv28RoL+y2qjHQSNYhJwZDxkCvjmGMNA+lrgOym0XDD6Csa756Oeu3cdH8e6lNKqSHeRan21r/iSIVFnv0SsMTk48a6vyHFpTzX+QYZDJV2Dy97C3BOIba80JIfkE4/VD8ygVri9kRhrzMczYfwpAHnjlKAoA68c4l7rfsTnOqc3n/k6N0r5IRk52CZrCman+pQ+akpIH60sOyqV7WhshpoimDextJoc3jTbuaj9xAtkgNU/grJgiKu7lw3vGEKTC8JUXkhnYVdNy+uoozj30S3TJeheQ44RF/l48VORXpwsduB6mf1DqMhcIZoj4rDKEnzZwg/f+rO7S8i+Tu4jFuenYCXL2tLmInyOU8Q2jFcsOukEgJ7drI1Znks4ogzIHPZLtoYxL7g1FJaOpE6I+KWqQxjfzUzQykaamlTChOqdJ9jDRA0CwHV1A5cs9seJZHzeqltN97YKPqDVrxKitCPi7U6uTxTip8TDO3kqYU1rDeQKLEbIZ3BCqEupjTmI="
+  on:
+    tags: true
+    branch: 'master'
+    # only deploy once
+    rvm: 2.2.0
+    env: PUPPET_VERSION=4.5
+
