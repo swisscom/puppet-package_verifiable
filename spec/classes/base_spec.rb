@@ -8,7 +8,7 @@ describe 'package_verifiable::base', :type => 'class' do
     it { should contain_file('/etc/facter/facts.d/packages.txt').with(
       :ensure => 'present',
       :owner  => 'root',
-      :group  => 0,
+      :group  => 'root',
       :mode   => '0644'
     )}
   end
