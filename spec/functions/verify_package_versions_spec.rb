@@ -10,9 +10,6 @@ describe 'verify_package_versions', :type => 'puppet_function' do
   end
 
   context 'with one prog' do
-    context 'with no facts' do
-      it { is_expected.to run.with_params('program1', '1.0').and_return(false) }
-    end
     context 'with another fact version' do
       let(:facts){
         {
@@ -29,12 +26,6 @@ describe 'verify_package_versions', :type => 'puppet_function' do
         }
       }
       it { is_expected.to run.with_params('program1', '1.0').and_return(true) }
-    end
-  end
-
-  context 'with one prog as hash' do
-    context 'with no facts' do
-      it { is_expected.to run.with_params('program1', '1.0').and_return(false) }
     end
   end
 
