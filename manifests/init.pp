@@ -1,6 +1,6 @@
 # install a package in a certain version
 # and provide a fact to verify its version
-define package_verifiable( #::package(
+define package_verifiable(
   $manage_package = true,
   $version        = 'installed',
   $epoch          = '',
