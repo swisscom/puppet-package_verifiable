@@ -3,8 +3,8 @@ class package_verifiable::base {
   $file_path = '/etc/facter/facts.d/packages.txt'
   file{$file_path:
     ensure => 'present',
-    owner  => root,
-    group  => 0,
+    owner  => 'root',
+    group  => 'root',
     mode   => '0644';
   }
 }
