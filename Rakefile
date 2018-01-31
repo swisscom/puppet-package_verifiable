@@ -17,11 +17,11 @@ end
 task :librarian_spec_prep do
   sh "librarian-puppet install --path=spec/fixtures/modules/"
   pwd = Dir.pwd.strip
-  unless File.directory?("#{pwd}/spec/fixtures/modules/role_icinga2")
+  unless File.directory?("#{pwd}/spec/fixtures/modules/package_verifiable")
     # workaround for windows as symlinks are not supported with 'ln -s' in git-bash
     if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
       begin
-        sh "cmd /c \"mklink /d #{pwd}\\spec\\fixtures\\modules\\role_icinga2 #{pwd}\""
+        sh "cmd /c \"mklink /d #{pwd}\\spec\\fixtures\\modules\\package_verifiable #{pwd}\""
       rescue Exception => e
         puts '-----------------------------------------'
         puts 'Git Bash must be started as Administrator'
@@ -29,7 +29,7 @@ task :librarian_spec_prep do
         raise e
       end
     else
-      sh "ln -s #{pwd} #{pwd}/spec/fixtures/modules/role_icinga2"
+      sh "ln -s #{pwd} #{pwd}/spec/fixtures/modules/package_verifiable"
     end
   end
 end
@@ -42,7 +42,7 @@ end
 
 task :spec_clean_win do
   pwd = Dir.pwd.strip
-  sh "cmd /c \"rmdir /q #{pwd}\\spec\\fixtures\\modules\\role_icinga2\""
+  sh "cmd /c \"rmdir /q #{pwd}\\spec\\fixtures\\modules\\package_verifiable\""
 end
 
 task :spec_prep => :librarian_spec_prep
