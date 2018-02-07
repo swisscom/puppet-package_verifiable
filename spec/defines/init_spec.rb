@@ -13,6 +13,7 @@ describe 'package_verifiable', :type => 'define' do
       :domain                     => 'example.com',
       :ipaddress                  => '10.0.0.1',
       :fqdn                       => 'std.example.com',
+      :puppetversion              => '3.8.7',
     }
   end
   let(:facts) { facts_default }

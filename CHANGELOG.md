@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.2 (2018-01-31)
+* Add support for Puppet 4
+* Update Gemfile, Rakefile and spec_helper.rb
+* Fix deprecation warnings in unit tests
+
 ## 2.0.1 (2016-02-17)
 * Add ordering Versionlock -> Package
 * Sort manifest, formatting & Tests
