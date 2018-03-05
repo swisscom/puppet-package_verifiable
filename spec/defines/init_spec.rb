@@ -129,4 +129,28 @@ describe 'package_verifiable', :type => 'define' do
       :version => 'installed',
     )}
   end
+  context 'without managing dependencies' do
+    let(:title){'testpackage'}
+    let(:params){
+      {
+        :manage_dependency => false,
+      }
+    }
+    it { should compile.with_all_deps }
+
+    it { should contain_package_verifiable__yum__versionlock('testpackage').with(
+      :ensure => 'installed',
+      :before => nil,
+    )}
+
+    it { should contain_package('testpackage').with(
+      :ensure => 'installed',
+      :before => nil,
+    ) }
+
+    it { should contain_package_verifiable__fact('testpackage').with(
+      :version => 'installed',
+      :after   => nil,
+    )}
+  end
 end
