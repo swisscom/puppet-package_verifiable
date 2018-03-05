@@ -1,9 +1,10 @@
 # install a package in a certain version
 # and provide a fact to verify its version
 define package_verifiable(
-  $manage_package = true,
-  $version        = 'installed',
-  $epoch          = '',
+  $version           = 'installed',
+  $epoch             = '',
+  $manage_package    = true,
+  $manage_dependency = true,
 ){
   require package_verifiable::base
 
@@ -23,6 +24,8 @@ define package_verifiable(
     version => $version,
   }
 
-  # Versionlock before install/upgrade Package, before updating fact
-  Package_verifiable::Yum::Versionlock[$title] -> Package<| title == $title |> -> File_line["${title}_version_fact"]
+  if $manage_dependency {
+    # Versionlock before install/upgrade Package, before updating fact
+    Package_verifiable::Yum::Versionlock[$title] -> Package<| title == $title |> -> File_line["${title}_version_fact"]
+  }
 }
