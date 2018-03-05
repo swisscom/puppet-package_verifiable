@@ -20,7 +20,7 @@ define package_verifiable(
     }
   }
 
-  package_verifiable::fact {$title: 
+  package_verifiable::fact {$title:
     package => $title,
     version => $version,
   }
