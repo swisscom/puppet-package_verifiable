@@ -7,13 +7,13 @@ define package_verifiable(
 ){
   require package_verifiable::base
 
-  package_verifiable::yum::versionlock {$name:
+  package_verifiable::yum::versionlock {$title:
     ensure => $version,
     epoch  => $epoch
   }
 
   if $manage_package {
-    package{$name:
+    package{$title:
       ensure => $version,
     }
   }
@@ -24,5 +24,5 @@ define package_verifiable(
   }
 
   # Versionlock before install/upgrade Package, before updating fact
-  Package_verifiable::Yum::Versionlock[$name] -> Package<| title == $name |> -> File_line["${name}_version_fact"]
+  Package_verifiable::Yum::Versionlock[$title] -> Package<| title == $title |> -> File_line["${title}_version_fact"]
 }
