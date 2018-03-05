@@ -9,7 +9,7 @@ Rake::Task[:lint].clear
 PuppetLint::RakeTask.new :lint do |config|
   config.ignore_paths = ["spec/**/*.pp", "vendor/**/*.pp"]
   config.log_format = '%{path}:%{line}:%{KIND}: %{message}'
-  config.disable_checks = ["class_inherits_from_params_class", "80chars"]
+  config.disable_checks = ["class_inherits_from_params_class", "80chars", "140chars"]
 end
 
 # use librarian-puppet to manage fixtures instead of .fixtures.yml
