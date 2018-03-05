@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.3 (2018-03-05)
+* Use tags to manage dependencies in order to manage multiple packages at once
+* Add manage_dependency parameter
+* Move fact to it's own defined type for external use
+
 ## 2.0.2 (2018-01-31)
 * Add support for Puppet 4
 * Update Gemfile, Rakefile and spec_helper.rb
