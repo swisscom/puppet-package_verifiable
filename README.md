@@ -21,7 +21,7 @@ if $::package_some_package_version and !verify_package_versions('some-package',$
   }
 }
 ```
-If the current deployed package does not match the version on the system the exec will be included into the catalog and hence triggered. By playing with before/require you will be able to add pre-/post-hooks to the package management.
+If the current deployed package does not match the version on the system the exec will be included into the catalog and hence triggered. By playing with before/require you will be able to add pre-/post-hooks to the package management.  
 Note: The fact is `undef` if the package is not yet installed.
 
 If the package itself is managed in another module that should not be using the package module, we can simply add the wrapper here, without managing the package itself:
