@@ -10,12 +10,13 @@ define package_verifiable(
 
   package_verifiable::yum::versionlock {$title:
     ensure => $version,
-    epoch  => $epoch
+    epoch  => $epoch,
   }
 
   if $manage_package {
     package{$title:
       ensure => $version,
+      tag    => "${module_name}_package",
     }
   }
 
@@ -26,6 +27,6 @@ define package_verifiable(
 
   if $manage_dependency {
     # Versionlock before install/upgrade Package, before updating fact
-    Package_verifiable::Yum::Versionlock[$title] -> Package<| title == $title |> -> Package_verifiable::Fact[$title]
+    Package_verifiable::Yum::Versionlock<| tag == $module_name |> -> Package<| tag == "${module_name}_package" |> -> Package_verifiable::Fact<| tag == $module_name |>
   }
 }
