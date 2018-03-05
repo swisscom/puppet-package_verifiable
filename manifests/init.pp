@@ -7,7 +7,7 @@ define package_verifiable(
 ){
   require package_verifiable::base
 
-  package_verifiable::yum::versionlock{$name:
+  package_verifiable::yum::versionlock {$name:
     ensure => $version,
     epoch  => $epoch
   }
@@ -18,12 +18,9 @@ define package_verifiable(
     }
   }
 
-  $escaped_name = downcase(regsubst($name,'-','_', 'G'))
-  file_line{
-    "${name}_version_fact":
-      line  => "package_${escaped_name}_version=${version}",
-      match => "^package_${escaped_name}_version=",
-      path  => $package_verifiable::base::file_path,
+  package_verifiable::fact {$title: 
+    package => $title,
+    version => $version,
   }
 
   # Versionlock before install/upgrade Package, before updating fact
