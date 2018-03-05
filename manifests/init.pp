@@ -26,6 +26,6 @@ define package_verifiable(
 
   if $manage_dependency {
     # Versionlock before install/upgrade Package, before updating fact
-    Package_verifiable::Yum::Versionlock[$title] -> Package<| title == $title |> -> File_line["${title}_version_fact"]
+    Package_verifiable::Yum::Versionlock[$title] -> Package<| title == $title |> -> Package_verifiable::Fact[$title]
   }
 }

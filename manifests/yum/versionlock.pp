@@ -1,5 +1,8 @@
 # Lock a RPM to a specfic version using the yum versionlock plugin
-define package_verifiable::yum::versionlock($ensure, $epoch = '') {
+define package_verifiable::yum::versionlock (
+  $ensure,
+  $epoch = '',
+) {
   require package_verifiable::yum::versionlock_plugin
 
   if $ensure =~ /^absent|installed|latest|present$/ {
@@ -13,12 +16,11 @@ define package_verifiable::yum::versionlock($ensure, $epoch = '') {
     }
   }
 
-  augeas {
-    "${name}_yum_versionlock":
-      incl      => '/etc/yum/pluginconf.d/versionlock.list',
-      lens      => 'YumVersionlock.lns',
-      load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
-      context   => '/files/etc/yum/pluginconf.d/versionlock.list',
-      changes   => $changes
+  augeas {"${name}_yum_versionlock":
+    incl      => '/etc/yum/pluginconf.d/versionlock.list',
+    lens      => 'YumVersionlock.lns',
+    load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
+    context   => '/files/etc/yum/pluginconf.d/versionlock.list',
+    changes   => $changes
   }
 }
