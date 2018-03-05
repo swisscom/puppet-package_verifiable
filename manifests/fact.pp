@@ -1,3 +1,4 @@
+#
 define package_verifiable::fact (
   $package = $title,
   $version = $package_verifiable::version,
