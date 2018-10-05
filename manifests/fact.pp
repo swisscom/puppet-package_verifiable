@@ -8,6 +8,6 @@ define package_verifiable::fact (
   file_line {"${package}_version_fact":
     line  => "package_${escaped_name}_version=${version}",
     match => "^package_${escaped_name}_version=",
-    path  => $package_verifiable::base::file_path,
+    path  => "${package_verifiable::base::facts_dir}/packages.txt",
   }
 }

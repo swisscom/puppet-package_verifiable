@@ -7,11 +7,18 @@ describe 'package_verifiable::base', :type => 'class' do
 
     it { should compile.with_all_deps }
 
+    it { should contain_exec('ensure-facts-dir-is-present').with(
+      :command => 'mkdir -p /etc/facter/facts.d',
+      :unless  => 'test -d /etc/facter/facts.d',
+      :path    => '/usr/bin:/bin',
+    )}
+
     it { should contain_file('/etc/facter/facts.d/packages.txt').with(
-      :ensure => 'present',
-      :owner  => 'root',
-      :group  => 'root',
-      :mode   => '0644'
+      :ensure  => 'present',
+      :owner   => 'root',
+      :group   => 'root',
+      :mode    => '0644',
+      :require => 'Exec[ensure-facts-dir-is-present]',
     )}
   end
 
@@ -20,11 +27,18 @@ describe 'package_verifiable::base', :type => 'class' do
 
     it { should compile.with_all_deps }
 
+    it { should contain_exec('ensure-facts-dir-is-present').with(
+      :command => 'mkdir -p /opt/puppetlabs/facter/facts.d',
+      :unless  => 'test -d /opt/puppetlabs/facter/facts.d',
+      :path    => '/usr/bin:/bin',
+    )}
+
     it { should contain_file('/opt/puppetlabs/facter/facts.d/packages.txt').with(
-      :ensure => 'present',
-      :owner  => 'root',
-      :group  => 'root',
-      :mode   => '0644'
+      :ensure  => 'present',
+      :owner   => 'root',
+      :group   => 'root',
+      :mode    => '0644',
+      :require => 'Exec[ensure-facts-dir-is-present]',
     )}
   end
 
