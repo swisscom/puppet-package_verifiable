@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.4 (2018-10-05)
+* Add workaround needed if the Puppet does not manage the Puppet Agent itself
+
 ## 2.0.3 (2018-03-05)
 * Use tags to manage dependencies in order to manage multiple packages at once
 * Add manage_dependency parameter
