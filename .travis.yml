@@ -1,28 +1,15 @@
 language: ruby
 
-before_install:
-  - gem install bundler
-
 cache: bundler
 
 matrix:
   include:
-    - rvm: 1.9.3
-      env: PUPPET_VERSION=3.7.0
-    - rvm: 1.9.3
-      env: PUPPET_VERSION=3.8.0
-    - rvm: 2.2.0
-      env: PUPPET_VERSION=4.0.0
-    - rvm: 2.2.0
-      env: PUPPET_VERSION=4.1.0
-    - rvm: 2.2.0
-      env: PUPPET_VERSION=4.2.0
-    - rvm: 2.2.0
-      env: PUPPET_VERSION=4.3.0
-    - rvm: 2.2.0
-      env: PUPPET_VERSION=4.4.0
-    - rvm: 2.2.0
-      env: PUPPET_VERSION=4.5.0
+    - rvm: 2.1.9
+      env: PUPPET_GEM_VERSION="~> 4.0"
+    - rvm: 2.4.1
+      env: PUPPET_GEM_VERSION="~> 5.0"
+    - rvm: 2.5.0
+      env: PUPPET_GEM_VERSION="~> 6.0"
 
 before_deploy:
   - rvm 1.9.3 do gem install mime-types -v 2.6.2
@@ -38,4 +25,3 @@ deploy:
     # only deploy once
     rvm: 2.2.0
     env: PUPPET_VERSION=4.5.0
-
