@@ -1,6 +1,6 @@
 {
   "name": "swisscom-package_verifiable",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "author": "Swisscom (Schweiz) AG",
   "summary": "Make package version available in the catalog.",
   "license": "MIT",
@@ -26,7 +26,7 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 3.2.0 < 5.0.0"
+      "version_requirement": ">= 3.2.0 < 6.0.0"
     }
   ]
 }
