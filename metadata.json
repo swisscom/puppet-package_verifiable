@@ -1,6 +1,6 @@
 {
   "name": "swisscom-package_verifiable",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "Swisscom (Schweiz) AG",
   "summary": "Make package version available in the catalog.",
   "license": "MIT",
@@ -12,14 +12,16 @@
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "6",
-        "7"
+        "7",
+        "8"
       ]
     }
   ],

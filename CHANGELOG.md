@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.0 (2019-09-11)
+* Add support for RHEL8
+
 ## 2.0.4 (2018-10-05)
 * Add workaround needed if the Puppet does not manage the Puppet Agent itself
 
