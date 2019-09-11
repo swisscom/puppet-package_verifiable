@@ -1,6 +1,8 @@
 require File.expand_path(File.join(File.dirname(__FILE__),'../spec_helper'))
 
 describe 'package_verifiable::yum::versionlock', :type => 'define' do
+  let(:facts) { { 'operatingsystemmajrelease' => '7' } }
+
   context 'default' do
     let(:title){'testpackage'}
     let(:params){
