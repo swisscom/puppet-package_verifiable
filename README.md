@@ -10,7 +10,53 @@ currently installed matches the one we want to install.
 For that we place a custom fact that records the installed version and then we
 can use a function to verify whether there will be a change.
 
+
+## Table of contents
+
+1. [Parameters](#parameters)
+1. [Usage](#usage)
+1. [Support](#support)
+
+
+## Parameters
+
+### Main class (package_verifiable)
+
+**package_verifiable::version** (Optional)
+* Description: Set the package version
+* Type: String
+* Default value: `installed`
+
+**package_verifiable::epoch** (Optional)
+* Description: Set the package epoch
+* Type: String
+* Default value: ` `
+
+**package_verifiable::manage_package** (Optional)
+* Description: Wether to ensure the package version with Puppet
+* Type: Boolean
+* Default value: `true`
+
+**package_verifiable::manage_dependency** (Optional)
+* Description: Wether to manage the package dependencies too
+* Type: Boolean
+* Default value: `true`
+
+### Yum versionlock class (package_verifiable::yum::versionlock)
+
+**package_verifiable::yum::versionlock::ensure** (Mandatory)
+* Description: Wether to ensure the versionlock or not
+* Type: String
+* Default value: `n/a`
+
+**package_verifiable::yum::versionlock::epoch** (Optional)
+* Description: Package epoch to ensure
+* Type: String
+* Default value: ` `
+
+
 ## Usage
+
 ```puppet
 $pkg_version = lookup('some_package_version','1.0-1')
 
