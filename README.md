@@ -20,36 +20,36 @@ can use a function to verify whether there will be a change.
 
 ## Parameters
 
-### Main class (package_verifiable)
+### Main class (`package_verifiable`)
 
-**package_verifiable::version** (Optional)
+**`package_verifiable::version`** (Optional)
 * Description: Set the package version
 * Type: String
 * Default value: `installed`
 
-**package_verifiable::epoch** (Optional)
+**`package_verifiable::epoch`** (Optional)
 * Description: Set the package epoch
 * Type: String
 * Default value: ` `
 
-**package_verifiable::manage_package** (Optional)
+**`package_verifiable::manage_package`** (Optional)
 * Description: Wether to ensure the package version with Puppet
 * Type: Boolean
 * Default value: `true`
 
-**package_verifiable::manage_dependency** (Optional)
+**`package_verifiable::manage_dependency`** (Optional)
 * Description: Wether to manage the package dependencies too
 * Type: Boolean
 * Default value: `true`
 
-### Yum versionlock class (package_verifiable::yum::versionlock)
+### Yum versionlock class (`package_verifiable::yum::versionlock`)
 
-**package_verifiable::yum::versionlock::ensure** (Mandatory)
+**`package_verifiable::yum::versionlock::ensure`** (Mandatory)
 * Description: Wether to ensure the versionlock or not
 * Type: String
 * Default value: `n/a`
 
-**package_verifiable::yum::versionlock::epoch** (Optional)
+**`package_verifiable::yum::versionlock::epoch`** (Optional)
 * Description: Package epoch to ensure
 * Type: String
 * Default value: ` `
