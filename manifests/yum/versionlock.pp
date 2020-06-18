@@ -1,4 +1,18 @@
-# Lock a RPM to a specfic version using the yum versionlock plugin
+# == Class: package_verifiable::yum::versionlock
+#
+# Lock a RPM to a specfic version using the yum versionlock plugin.
+#
+# === Parameters
+#
+# [*ensure*]
+#   (String) Wether to ensure the versionlock or not
+#   Mandatory
+#
+# [*epoch*]
+#   (String) Package epoch to ensure
+#   Defaults to ` `.
+#
+
 define package_verifiable::yum::versionlock (
   $ensure,
   $epoch = '',
@@ -21,6 +35,6 @@ define package_verifiable::yum::versionlock (
     lens      => 'YumVersionlock.lns',
     load_path => '/var/lib/puppet/lib/package_verifiable/lenses',
     context   => '/files/etc/yum/pluginconf.d/versionlock.list',
-    changes   => $changes
+    changes   => $changes,
   }
 }

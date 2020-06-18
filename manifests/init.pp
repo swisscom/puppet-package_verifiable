@@ -1,10 +1,32 @@
-# install a package in a certain version
-# and provide a fact to verify its version
+# == Class: package_verifiable
+#
+# Install a package in a certain version and provide a fact to verify its
+# version.
+#
+# === Parameters
+#
+# [*version*]
+#   (String) Set the package version
+#   Defaults to `installed`.
+#
+# [*epoch*]
+#   (String) Set the package epoch
+#   Defaults to ` `.
+#
+# [*manage_package*]
+#   (Boolean) Wether to ensure the package version with Puppet
+#   Defaults to `true`.
+#
+# [*manage_dependency*]
+#   (Boolean) Wether to manage the package dependencies too
+#   Defaults to `true`.
+#
+
 define package_verifiable(
-  $version           = 'installed',
-  $epoch             = '',
-  $manage_package    = true,
-  $manage_dependency = true,
+  String $version            = 'installed',
+  String $epoch              = '',
+  Boolean $manage_package    = true,
+  Boolean $manage_dependency = true,
 ){
   require package_verifiable::base
 

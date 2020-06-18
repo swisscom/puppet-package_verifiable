@@ -1,4 +1,8 @@
-#basic setup for package_verifiable
+# == Class: package_verifiable::base
+#
+# Basic setup for package verifiable.
+#
+
 class package_verifiable::base {
   if versioncmp($::puppetversion, '4.0.0') >= 0 {
     $facts_dir = '/opt/puppetlabs/facter/facts.d'
