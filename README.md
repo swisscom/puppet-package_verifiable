@@ -1,3 +1,4 @@
+> [!NOTE]
 > DEPRECATED - no longer maintained!
 
 # package_verifiable
