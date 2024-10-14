@@ -1,3 +1,5 @@
+> DEPRECATED - no longer maintained!
+
 # package_verifiable
 
 [![Build Status](https://travis-ci.org/swisscom/puppet-package_verifiable.svg?branch=master)](https://travis-ci.org/swisscom/puppet-package_verifiable)
